@@ -1,6 +1,7 @@
 body {
-  background-color: black;
-  color: white;
+  background-color: #0f0f0f;
+  color: #f0f0f0;
+  text-align: center;
 }
 .center {
   display: block;
@@ -20,19 +21,16 @@ body {
 
 h1 {
   text-align: center;
-  color: white;
   font-family: "Times New Roman", Times, serif;
 }
 
 h2 {
   text-align: center;
-  color: white;
   font-family: "Times New Roman", Times, serif;
 }
 
 h3 {
   text-align: center;
-  color: white;
   font-family: "Times New Roman", Times, serif;
 
   /*
@@ -46,4 +44,14 @@ footer {
   display: block;
   text-align: center;
   margin-top: 300px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding-top: 30px;
 }
