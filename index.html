@@ -6,18 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="main.css" rel="stylesheet" type="text/css" />
     <title>INORGANIC GAMES</title>
+    <script>
+      window.onload = function() {
+        var images = ['logo.png', 'logo2.png', 'logo3.png'];
+        var logo = document.getElementById('logo');
+        logo.src = images[Math.floor(Math.random() * images.length)];
+      };
+    </script>
   </head>
   <body>
-    <img src="logo.png" alt="Inorgnic Logo" class="center" />
-    <img src="logo3.png" alt="Inorgnic Logo" class="center" />
-    <img src="logo2.png" alt="Inorgnic Logo" class="center" />
+    <nav>
+      <div class="nav-container">
+        <a href="gamesPortfolio.html">OUR GAMES</a>
+        <a href="index.html">
+          <img src="logo.png" alt="Inorgnic Logo" class="center" id="logo" />
+        </a>
+        <a href="careers.html">INTERNSHIPS</a>
+      </div>
+    </nav>
 
-    <h1><a href="gamesPortfolio.html">OUR GAMES</a></h1>
-    <h1><a href="careers.html">INTERNSHIPS</a></h1>
 
-    <h3 style="margin-top: 100px;">
-      <b>
-        We seek to promote community through innovative games.
+    <h3 style="margin-top: 15em; margin-bottom: 25em;">
+      <b style="text-decoration: underline;">
+        Are you inorganic?
+      </b>
       </b>
     </h3>
 

@@ -6,9 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link href="main.css" rel="stylesheet" type="text/css" />
     <title>INORGANIC GAMES</title>
+    <script>
+      window.onload = function() {
+        var images = ['logo.png', 'logo2.png', 'logo3.png'];
+        var logo = document.getElementById('logo');
+        logo.src = images[Math.floor(Math.random() * images.length)];
+      };
+    </script>
   </head>
   <body>
-    <h1 style="margin-bottom: 100px;"><a href="index.html">HOME</a></h1>
+    <nav>
+      <div class="nav-container">
+        <a href="gamesPortfolio.html">OUR GAMES</a>
+        <a href="index.html">
+          <img src="logo.png" alt="Inorgnic Logo" class="center" id="logo" />
+        </a>
+        <a href="careers.html">INTERNSHIPS</a>
+      </div>
+    </nav>
     <h1><a href="ruff_rescue/ruffRescue.html">Ruff Rescue</a></h1>
     <a href="ruff_rescue/ruffRescue.html"
       ><img src="Media/RuffRescueMedia/dog2.png" alt="Pixel Art Dog" class="center"

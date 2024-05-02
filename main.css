@@ -53,6 +53,61 @@ ul {
 }
 
 li {
-  padding-top: 30px;
+  padding-top: 2em;
   list-style-type: none;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 20vw; /* Use vw (viewport width) units for horizontal padding */
+}
+
+.nav-container a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.2em;
+  padding: 1em; /* Use em units for padding */
+}
+
+.center {
+  width: auto;
+  height: 10vh; /* Use vh (viewport height) units for height */
+  object-fit: contain;
+}
+
+@media (max-width: 600px) {
+  .nav-container {
+    flex-direction: column;
+    padding: 2vh 5vw; /* Use vh and vw units for padding */
+  }
+
+  .nav-container a {
+    font-size: 1em;
+    padding: 0.5em; /* Use em units for padding */
+  }
+}
+
+.job-listing {
+  background-color: #292929;
+  margin: 2em auto; /* Vertical margin is 1em, horizontal margin is automatic */
+  padding: 3em;
+  border-radius: 10px;
+  width: 80%; /* Adjust as needed */
+  max-width: 1200px; /* Prevent the div from becoming too wide on large screens */
+}
+
+.job-listing h2 {
+  text-align: left;
+  color: rgb(247, 187, 255);
+
+}
+.job-listing h3 {
+  text-align: left;
+  color: rgb(184, 191, 255);
+}
+.job-listing h4 {
+  text-align: left;
+  padding-left: 2em;
 }
