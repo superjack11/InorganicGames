@@ -67,8 +67,16 @@ li {
 .nav-container a {
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.2em;
-  padding: 1em; /* Use em units for padding */
+  font-size: 1.1em;
+  padding: .8em; /* Use em units for padding */
+}
+
+.nav-link {
+  background-color: #242424; /* Change to your desired color */
+  color: #ffffff; /* Change text color as needed */
+  padding: 1px 1px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+  border-radius: 10px; /* Optional: Add rounded corners */
 }
 
 .center {
@@ -84,7 +92,7 @@ li {
   }
 
   .nav-container a {
-    font-size: 1em;
+    font-size: 0.75em;
     padding: 0.5em; /* Use em units for padding */
   }
 }
@@ -94,7 +102,7 @@ li {
   margin: 2em auto; /* Vertical margin is 1em, horizontal margin is automatic */
   padding: 3em;
   border-radius: 10px;
-  width: 80%; /* Adjust as needed */
+  width: 70%; /* Adjust as needed */
   max-width: 1200px; /* Prevent the div from becoming too wide on large screens */
 }
 
@@ -110,4 +118,5 @@ li {
 .job-listing h4 {
   text-align: left;
   padding-left: 2em;
+  padding-right: 2em;
 }
