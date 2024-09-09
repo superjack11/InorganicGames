@@ -1,2 +1,38 @@
+# Node modules
+node_modules/
+
+# Build output
+.next/
+out/
+
+# Log files
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# IDE files
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Package lock
+package-lock.json
+
+# Ignore files in the StudyHelper directory
+StudyHelper/uploads/
+StudyHelper/*.log
+StudyHelper/.env
+StudyHelper/.env.local
+StudyHelper/.env.development
+StudyHelper/.env.test
+StudyHelper/.env.production
 
 Media/WritheMedia/Gameplay.mov
