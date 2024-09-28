@@ -1,42 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="main.css" rel="stylesheet" type="text/css" />
-    <title>INORGANIC</title>
-    <script>
-      window.onload = function() {
-        var images = ['logo.png', 'logo2.png', 'logo3.png'];
-        var logo = document.getElementById('logo');
-        logo.src = images[Math.floor(Math.random() * images.length)];
-      };
-    </script>
-  </head>
-  <body>
-    <nav>
-      <div class="nav-container">
-        <!--<a href="gamesPortfolio.html" class="nav-link">OUR GAMES</a>-->
-        <a href="index.html">
-          <img src="logo.png" alt="Inorganic Logo" class="center" id="logo" />
-        </a>
-        <!--<a href="careers.html" class="nav-link">INTERNSHIPS</a>-->
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="main.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <title>INORGANIC</title>
+  <script>
+    window.onload = function() {
+      var images = ['logo.png', 'logo2.png', 'logo3.png'];
+      var logo = document.getElementById('logo');
+      logo.src = images[Math.floor(Math.random() * images.length)];
 
+      // Show the first project by default
+      showProject('project1');
+    };
 
-    <h3 style="margin-top: 15em; margin-bottom: 25em;">
-      <b style="text-decoration: underline;">
-        Are you inorganic?
-      </b>
-      </b>
-    </h3>
+    // Function to display the selected project and hide others
+    function showProject(projectId) {
+      var projects = document.getElementsByClassName('project');
+      for (var i = 0; i < projects.length; i++) {
+        // Pause any currently playing video
+        var video = projects[i].getElementsByTagName('video')[0];
+        if (video) {
+          video.pause(); // Pause the video
+        }
+        projects[i].style.display = 'none'; // Hide all projects
+      }
 
-    <footer>
-      <h5>For Support, Contact inorganicgames@gmail.com</h5>
-      <h5>Privacy Policy:</h5>
-      <h5>No data is collected</h5>
-    </footer>
-  </body>
+      // Show the selected project
+      var selectedProject = document.getElementById(projectId);
+      if (selectedProject) {
+        selectedProject.style.display = 'flex'; // Display the selected project
+
+        // Play the video in the selected project
+        var selectedVideo = selectedProject.getElementsByTagName('video')[0];
+        if (selectedVideo) {
+          selectedVideo.play(); // Play the video
+        }
+      }
+    }
+
+  </script>
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+      <!--<a href="gamesPortfolio.html" class="nav-link">OUR GAMES</a>-->
+      <a href="index.html">
+        <img src="logo.png" alt="Inorganic Logo" class="center" id="logo" />
+      </a>
+      <!--<a href="careers.html" class="nav-link">INTERNSHIPS</a>-->
+    </div>
+  </nav>
+
+  <h3 style="margin-top: 3em; margin-bottom: 3em;">
+    <b>Are you inorganic?</b>
+  </h3>
+
+  <div class="menu">
+    <div class="menu-item" onclick="showProject('project1')"><img src="Media/PurrfectAlchemyMedia/purrfectlogo.png" alt="Purrfect Alchemy" class="menu-logo"></div>
+    <div class="menu-item" onclick="showProject('project2')"><img src="Media/MAN_HUNTMedia/menuLogo.png" alt="MAN_HUNT" class="menu-logo"></div>
+  </div>
+
+  <!-- Content for each project -->
+  <div id="project1" class="project">
+    <video controls autoplay muted>
+      <source src="Media/PurrfectAlchemyMedia/miniTrailer.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div>
+      <img src="Media/PurrfectAlchemyMedia/logo_simplified_inverted.png" alt="Purrfect Alchemy" style="max-height: 8.5em; width: auto;">
+      <a href="https://store.steampowered.com/app/3124780/Purrfect_Alchemy/" target="_blank">
+        <img src="Media/PurrfectAlchemyMedia/wishlistOnSteam.png" alt="Wishlist On Steam" class="menu-logo">
+      </a>
+      <h4>Play the demo NOW on Steam!</a></h4>
+      <p style="color: #e0c8e5;">Purrfect Alchemy is a "purrfect" blend of twin stick shooter, wave survival, tower defender. Craft defenses at the center cauldron with a variety of ingredients you may find. Upgrade spells, defeat bosses and reach the end with up to 3 other friends in this Co-Op adventure</p>
+    </div>
+  </div>
+
+  <div id="project2" class="project">
+    <video controls autoplay muted>
+      <source src="Media/MAN_HUNTMedia/FINAL30.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div>
+      <h1 style="font-family: 'Bebas Neue'; font-size: 5.5em; color: #FF1F01;">MAN_HUNT</h1>
+      <a href="https://apps.apple.com/us/app/man-hunt/id6473125600" target="_blank">
+        <img src="Media/MAN_HUNTMedia/downloadOnTheAppStore.PNG" alt="Download on the App Store" class="menu-logo">
+      </a>
+      <p>Real life tag with location tracking. PLAY NOW!
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <h5>For Support, Contact inorganicgames@gmail.com</h5>
+    <h5>Privacy Policy:</h5>
+    <h5>No data is collected</h5>
+  </footer>
+</body>
 </html>

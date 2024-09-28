@@ -1,11 +1,16 @@
 "use client"
 
-// src/app/page.tsx
 import { useState } from 'react';
+
+interface Flashcard {
+  question: string;
+  answer: string;
+}
 
 export default function Page() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [uploadStatus, setUploadStatus] = useState<string | null>(null);
+  const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0] || null;
@@ -31,6 +36,9 @@ export default function Page() {
 
       if (response.ok) {
         setUploadStatus('Upload successful!');
+        const data = await response.json();
+        // Assuming the API response contains flashcards in the following format
+        setFlashcards(data.flashcards);
       } else {
         setUploadStatus('Upload failed. Please try again.');
       }
@@ -58,6 +66,19 @@ export default function Page() {
         </button>
       </form>
       {uploadStatus && <p className="mt-4">{uploadStatus}</p>}
+      {flashcards.length > 0 && (
+        <div className="mt-8 space-y-4">
+          <h2 className="text-xl font-semibold">Flashcards</h2>
+          {flashcards.map((flashcard, index) => (
+            <div key={index} className="p-4 border rounded-lg shadow-md">
+              <p className="font-bold">Question:</p>
+              <p>{flashcard.question}</p>
+              <p className="mt-2 font-bold">Answer:</p>
+              <p>{flashcard.answer}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

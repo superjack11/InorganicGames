@@ -3,6 +3,12 @@ body {
   color: #f0f0f0;
   text-align: center;
 }
+
+p {
+  font-family: "Lato", sans-serif;
+  font-size: 1.2em;
+}
+
 .center {
   display: block;
   margin-left: auto;
@@ -19,25 +25,9 @@ body {
   padding: 10px;
 }
 
-h1 {
+h1, h2, h3 {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
-}
-
-h2 {
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-}
-
-h3 {
-  text-align: center;
-  font-family: "Times New Roman", Times, serif;
-
-  /*
-  padding-left: 20px;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  */
 }
 
 footer {
@@ -109,14 +99,79 @@ li {
 .job-listing h2 {
   text-align: left;
   color: rgb(247, 187, 255);
-
 }
+
 .job-listing h3 {
   text-align: left;
   color: rgb(184, 191, 255);
 }
+
 .job-listing h4 {
   text-align: left;
   padding-left: 2em;
   padding-right: 2em;
+}
+
+/* Style the horizontal menu */
+.menu {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 5px;
+  background-color: #242424;
+}
+
+.menu-item {
+  padding: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 10px;
+  border-bottom: 2px solid transparent;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.menu-logo {
+  max-height: 5.5em; /* Adjust height as needed to fit the text size */
+  width: auto; /* Maintain aspect ratio */
+}
+
+.menu-item:hover {
+  border-bottom: 2px solid #333;
+}
+
+/* Style for the project content sections */
+.project {
+  display: none; /* Hide all projects by default */
+  flex-direction: row; /* Ensure the content is displayed horizontally */
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.project video {
+  flex: 1;
+  max-height: 25rem; /* Adjust video width */
+  margin-right: 20px;
+}
+
+.project div {
+  flex: 1;
+  max-width: 45%; /* Adjust description width */
+}
+
+/* Ensure footer stays at the bottom */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+footer {
+  margin-top: 10em;
+  padding: 20px;
+  text-align: center;
 }
