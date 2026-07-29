@@ -1,0 +1,36 @@
+<svg width="576" height="576" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="144" y2="144" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2684FF"/>
+      <stop offset="1" stop-color="#0747A6"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="144" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="lockShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#032B63" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Full-bleed square background -->
+  <rect x="0" y="0" width="144" height="144" fill="url(#bg)"/>
+  <rect x="0" y="0" width="144" height="144" fill="url(#sheen)"/>
+
+  <!-- Padlock -->
+  <g filter="url(#lockShadow)">
+    <!-- Shackle -->
+    <path d="M56 74 V53 A16 16 0 0 1 88 53 V74"
+          fill="none" stroke="#EAF2FF" stroke-width="11" stroke-linecap="round"/>
+    <!-- Body -->
+    <rect x="42" y="68" width="60" height="50" rx="13" fill="#ffffff"/>
+  </g>
+
+  <!-- Masked value dots (••••) -->
+  <g fill="#0B4EA2">
+    <circle cx="54" cy="93" r="4.6"/>
+    <circle cx="66" cy="93" r="4.6"/>
+    <circle cx="78" cy="93" r="4.6"/>
+    <circle cx="90" cy="93" r="4.6"/>
+  </g>
+</svg>

@@ -15,22 +15,31 @@ interface Props {
    * here.
    */
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  /**
+   * Site-root-relative path to a page-specific share image. Defaults to the
+   * studio logo; pages with their own artwork (e.g. the Secure Fields banner)
+   * pass it here so a shared link previews as that product, not the studio.
+   */
+  ogImage?: string;
 }
 
-const { title, description, type = 'website', structuredData } = Astro.props;
+const { title, description, type = 'website', structuredData, ogImage } = Astro.props;
 
 // Astro.site is the configured origin (https://inorganicgames.com); this is
 // the actual per-page URL. Previously every page declared the homepage as
 // canonical, which tells search engines the subpages are duplicates.
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL('/logo.png', Astro.site);
+const ogImageURL = new URL(ogImage ?? '/logo.png', Astro.site);
+// The studio logo is square; a supplied banner is wide, so the card type differs.
+const twitterCard = ogImage ? 'summary_large_image' : 'summary';
 
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: SITE.name,
   url: String(Astro.site),
-  logo: ogImageURL.toString(),
+  // Always the studio mark — the Organization logo is not the page share image.
+  logo: new URL('/logo.png', Astro.site).toString(),
   email: SITE.email,
   description: 'A game studio that builds playable ads engineered to convert for mobile UA teams.',
 };
@@ -59,7 +68,7 @@ const pageStructuredData = structuredData
     <meta property="og:site_name" content={SITE.name} />
     <meta property="og:image" content={ogImageURL} />
 
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content={twitterCard} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageURL} />

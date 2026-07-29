@@ -1,0 +1,57 @@
+<svg width="2240" height="2240" viewBox="0 0 1120 1120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1120" y2="548" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2C7BFF"/>
+      <stop offset="0.55" stop-color="#0B5AD6"/>
+      <stop offset="1" stop-color="#063A82"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="548" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="0.45" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="240" cy="266" r="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lockShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#031C43" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <!-- Banner band centered vertically in the square canvas (crop target) -->
+  <g transform="translate(0,286)">
+    <!-- Background -->
+    <rect x="0" y="0" width="1120" height="548" fill="url(#bg)"/>
+    <rect x="0" y="0" width="1120" height="548" fill="url(#sheen)"/>
+
+    <!-- Faint oversized dots watermark, bottom-right -->
+    <g fill="#ffffff" opacity="0.05">
+      <circle cx="980" cy="470" r="34"/>
+      <circle cx="1064" cy="470" r="34"/>
+      <circle cx="1064" cy="386" r="34"/>
+    </g>
+
+    <!-- Soft glow behind the lock -->
+    <circle cx="240" cy="266" r="250" fill="url(#glow)"/>
+
+    <!-- Padlock (same motif as the app icon, scaled 3x) -->
+    <g filter="url(#lockShadow)" transform="translate(24,43) scale(3)">
+      <path d="M56 74 V53 A16 16 0 0 1 88 53 V74"
+            fill="none" stroke="#EAF2FF" stroke-width="11" stroke-linecap="round"/>
+      <rect x="42" y="68" width="60" height="50" rx="13" fill="#ffffff"/>
+      <g fill="#0B4EA2">
+        <circle cx="54" cy="93" r="4.6"/>
+        <circle cx="66" cy="93" r="4.6"/>
+        <circle cx="78" cy="93" r="4.6"/>
+        <circle cx="90" cy="93" r="4.6"/>
+      </g>
+    </g>
+
+    <!-- Wordmark -->
+    <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+      <text x="404" y="246" font-size="88" font-weight="700" fill="#ffffff" letter-spacing="-1.5">Secure Fields</text>
+      <text x="404" y="348" font-size="88" font-weight="300" fill="#D6E6FF" letter-spacing="-1.5">for Jira</text>
+      <text x="408" y="410" font-size="31" font-weight="400" fill="#A9CBFF" letter-spacing="0.3">Field-level security for regulated teams</text>
+    </g>
+  </g>
+</svg>

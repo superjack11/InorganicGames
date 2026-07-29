@@ -1,0 +1,70 @@
+<svg width="1920" height="1920" viewBox="0 0 960 960" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#2C7BFF"/>
+      <stop offset="0.55" stop-color="#0B5AD6"/>
+      <stop offset="1" stop-color="#063A82"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="600" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/>
+      <stop offset="0.42" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="480" cy="168" r="300" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="lockShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#031C43" flood-opacity="0.38"/>
+    </filter>
+  </defs>
+
+  <!-- Hero band centered vertically in the square canvas (crop target: 960x600) -->
+  <g transform="translate(0,180)">
+    <!-- Background -->
+    <rect x="0" y="0" width="960" height="600" fill="url(#bg)"/>
+    <rect x="0" y="0" width="960" height="600" fill="url(#sheen)"/>
+
+    <!-- Faint dots watermark corners -->
+    <g fill="#ffffff" opacity="0.05">
+      <circle cx="70" cy="540" r="30"/>
+      <circle cx="146" cy="540" r="30"/>
+      <circle cx="890" cy="70" r="30"/>
+      <circle cx="890" cy="146" r="30"/>
+    </g>
+
+    <!-- Soft glow behind the lock -->
+    <circle cx="480" cy="168" r="300" fill="url(#glow)"/>
+
+    <!-- Padlock (same motif as the app icon, scaled 3x) -->
+    <g filter="url(#lockShadow)" transform="translate(264,-63) scale(3)">
+      <path d="M56 74 V53 A16 16 0 0 1 88 53 V74"
+            fill="none" stroke="#EAF2FF" stroke-width="11" stroke-linecap="round"/>
+      <rect x="42" y="68" width="60" height="50" rx="13" fill="#ffffff"/>
+      <g fill="#0B4EA2">
+        <circle cx="54" cy="93" r="4.6"/>
+        <circle cx="66" cy="93" r="4.6"/>
+        <circle cx="78" cy="93" r="4.6"/>
+        <circle cx="90" cy="93" r="4.6"/>
+      </g>
+    </g>
+
+    <!-- Wordmark -->
+    <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" text-anchor="middle">
+      <text x="480" y="378" font-size="72" font-weight="700" fill="#ffffff" letter-spacing="-1.2">Secure Fields</text>
+      <text x="480" y="450" font-size="72" font-weight="300" fill="#D6E6FF" letter-spacing="-1.2">for Jira</text>
+      <text x="480" y="500" font-size="26" font-weight="400" fill="#A9CBFF" letter-spacing="0.3">Field-level security for regulated teams</text>
+    </g>
+
+    <!-- Feature chips -->
+    <g font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" text-anchor="middle" font-size="19" font-weight="500">
+      <rect x="91"  y="536" width="250" height="42" rx="21" fill="#ffffff" fill-opacity="0.13" stroke="#ffffff" stroke-opacity="0.22"/>
+      <text x="216" y="563" fill="#EAF2FF">Values never in Jira</text>
+
+      <rect x="365" y="536" width="250" height="42" rx="21" fill="#ffffff" fill-opacity="0.13" stroke="#ffffff" stroke-opacity="0.22"/>
+      <text x="490" y="563" fill="#EAF2FF">Every reveal audited</text>
+
+      <rect x="639" y="536" width="230" height="42" rx="21" fill="#ffffff" fill-opacity="0.13" stroke="#ffffff" stroke-opacity="0.22"/>
+      <text x="754" y="563" fill="#EAF2FF">Admin access rules</text>
+    </g>
+  </g>
+</svg>

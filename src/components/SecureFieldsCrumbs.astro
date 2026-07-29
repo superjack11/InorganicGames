@@ -1,11 +1,12 @@
 ---
 interface Props {
-  current: 'docs' | 'security' | 'privacy' | 'terms' | 'support';
+  current: 'overview' | 'docs' | 'security' | 'privacy' | 'terms' | 'support';
 }
 
 const { current } = Astro.props;
 
 const links = [
+  { key: 'overview', label: 'Overview', href: '/secure-fields/' },
   { key: 'docs', label: 'Docs', href: '/secure-fields/docs' },
   { key: 'security', label: 'Security', href: '/secure-fields/security' },
   { key: 'privacy', label: 'Privacy', href: '/secure-fields/privacy' },
