@@ -1,0 +1,249 @@
+---
+import Base from '../../layouts/Base.astro';
+import SecureFieldsCrumbs from '../../components/SecureFieldsCrumbs.astro';
+
+const title = 'Support SLA | Secure Fields';
+const description =
+  'Support hours, target response times, and service availability for the Secure Fields Jira Cloud app by Inorganic Games LLC.';
+
+// The commitments below are referenced throughout the page. Change them here and
+// the whole document stays consistent — and keep them in sync with the Atlassian
+// Marketplace vendor support profile.
+const sla = {
+  updated: 'August 22, 2026',
+  effective: 'August 22, 2026',
+  timezone: 'Pacific Time (America/Los_Angeles)',
+  hours: '9:00 AM to 5:00 PM',
+  days: 'Monday through Friday',
+  standardResponse: '24 business hours',
+  urgentResponse: '8 business hours',
+};
+
+const holidays = [
+  { name: "New Year's Day", rule: 'January 1' },
+  { name: 'Memorial Day', rule: 'Last Monday in May' },
+  { name: 'Independence Day', rule: 'July 4 (observed on the nearest weekday when it falls on a weekend)' },
+  { name: 'Labor Day', rule: 'First Monday in September' },
+  { name: 'Thanksgiving', rule: 'Fourth Thursday in November, and the Friday following' },
+  { name: 'Christmas Eve and Christmas Day', rule: 'December 24 and December 25' },
+  { name: "New Year's Eve", rule: 'December 31' },
+];
+---
+
+<Base title={title} description={description}>
+  <SecureFieldsCrumbs current="sla" />
+
+  <article class="mx-auto max-w-3xl px-6 py-16 md:py-20">
+    <p class="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-signal">Support</p>
+    <h1 class="font-display text-4xl tracking-wide text-bone md:text-5xl">Support Service Level Agreement</h1>
+    <p class="mt-3 text-sm text-muted">
+      Inorganic Games LLC &mdash; Secure Fields<br />
+      Effective: {sla.effective} &middot; Last updated: {sla.updated}
+    </p>
+
+    <div class="mt-10 space-y-10 leading-relaxed text-muted">
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">1. What this document is</h2>
+        <p class="mt-3">
+          This Service Level Agreement ("SLA") is the Support Policy and SLA referenced in our
+          <a href="/secure-fields/terms" class="text-signal underline underline-offset-2 hover:text-signal-dim">Terms of Service</a>
+          (Sections 5.1 and 5.2). It describes when we are available, how quickly we aim to reply, and
+          what falls outside the scope of support.
+        </p>
+        <p class="mt-3">
+          It applies to customers with an active paid subscription to Secure Fields through the Atlassian
+          Marketplace. Evaluations, trials, and any beta features get best-effort support with no
+          committed response time &mdash; Section 18 of our Terms disclaims any SLA or support obligation
+          for Trials and Betas, and the targets below do not extend to them.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">2. How to reach support</h2>
+        <p class="mt-3">
+          Email
+          <a href="mailto:support@inorganicgames.com" class="text-signal underline underline-offset-2 hover:text-signal-dim">support@inorganicgames.com</a>.
+          Email is our only support channel; we do not operate a phone line or live chat.
+        </p>
+        <p class="mt-3">To let us act on the first reply, please include:</p>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>your Jira site URL,</li>
+          <li>the name of the affected Secure Text field and, if you have it, the issue key,</li>
+          <li>what you expected to happen and what happened instead,</li>
+          <li>whether the problem affects one user, one project, or the whole site.</li>
+        </ul>
+        <p class="mt-3">
+          <strong class="text-bone">Never include a protected value in a support request.</strong> We have no
+          way to read the values your app stores, and we do not want a copy. The same goes for anything
+          regulated &mdash; protected health information, financial account numbers, or government ID
+          numbers belong only inside the app's protected field, never in an email, a screenshot, a field
+          name, or an issue summary.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">3. Hours of operation</h2>
+        <dl class="mt-3 space-y-4">
+          <div>
+            <dt class="font-mono text-xs uppercase tracking-wide text-signal">Days</dt>
+            <dd class="mt-1">{sla.days}</dd>
+          </div>
+          <div>
+            <dt class="font-mono text-xs uppercase tracking-wide text-signal">Hours</dt>
+            <dd class="mt-1">{sla.hours}, {sla.timezone}</dd>
+          </div>
+          <div>
+            <dt class="font-mono text-xs uppercase tracking-wide text-signal">Closed</dt>
+            <dd class="mt-1">Weekends and the holidays listed in Section 7</dd>
+          </div>
+        </dl>
+        <p class="mt-4">
+          You can write to us at any hour. Requests that arrive outside these hours are treated as
+          arriving when we next open, and the response clock starts then.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">4. Target response times</h2>
+        <p class="mt-3">
+          "Response" means a substantive reply from a person who has read your request &mdash; a question, a
+          diagnosis, a workaround, or a fix. It is not an automated acknowledgement. These are targets we
+          measure ourselves against during the hours of operation above, not guarantees, and this SLA
+          carries no service credits.
+        </p>
+        <dl class="mt-5 space-y-5">
+          <div>
+            <dt class="font-mono text-xs uppercase tracking-wide text-signal">Urgent &mdash; {sla.urgentResponse}</dt>
+            <dd class="mt-1">
+              The app is unusable across your site; a protected value is visible to someone your rules do
+              not authorize; a protected value is unreachable by someone your rules do authorize; or a
+              suspected security vulnerability (see Section 6).
+            </dd>
+          </div>
+          <div>
+            <dt class="font-mono text-xs uppercase tracking-wide text-signal">Standard &mdash; {sla.standardResponse}</dt>
+            <dd class="mt-1">
+              Everything else: configuration and setup questions, unexpected behavior with a workaround,
+              audit log questions, billing questions, documentation gaps, and feature requests.
+            </dd>
+          </div>
+        </dl>
+        <p class="mt-4">
+          We categorize incoming requests ourselves, and will tell you if we read a request differently
+          than you did. Response targets say nothing about how long a fix takes: some issues are answered
+          and closed in one reply, and others need a code change and a Marketplace release. We will keep
+          you updated as work progresses rather than going quiet.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">5. Service availability</h2>
+        <p class="mt-3">
+          Secure Fields runs entirely on Atlassian's Forge platform. We operate no servers, no databases,
+          and no network endpoints of our own, and the app sends no data outside Atlassian's platform.
+          The practical consequence is that the app's availability is the availability of your Jira Cloud
+          site and of the Forge platform underneath it, both of which Atlassian operates and covers under
+          its own agreements with you.
+        </p>
+        <p class="mt-3">
+          We therefore do not publish a separate uptime percentage for the app and do not offer service
+          credits for downtime &mdash; doing either would be claiming credit for infrastructure we do not
+          run. For live platform status, see
+          <a href="https://status.atlassian.com" class="text-signal underline underline-offset-2 hover:text-signal-dim" rel="noopener">status.atlassian.com</a>.
+        </p>
+        <p class="mt-3">
+          What we do commit to: responding on the schedule above when the app itself is at fault, and
+          telling you plainly when the cause sits with the platform rather than with us.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">6. Security vulnerability reports</h2>
+        <p class="mt-3">
+          Report suspected vulnerabilities privately to
+          <a href="mailto:support@inorganicgames.com" class="text-signal underline underline-offset-2 hover:text-signal-dim">support@inorganicgames.com</a>
+          rather than in a public forum. We treat these as Urgent ({sla.urgentResponse} target
+          acknowledgement), we will not take action against good-faith security research, and we will keep
+          you informed through remediation. Please do not include a proof-of-concept payload containing
+          real protected data.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">7. Observed holidays</h2>
+        <p class="mt-3">Support is closed on these United States holidays:</p>
+        <dl class="mt-3 space-y-3">
+          {
+            holidays.map((h) => (
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-signal">{h.name}</dt>
+                <dd class="mt-1">{h.rule}</dd>
+              </div>
+            ))
+          }
+        </dl>
+        <p class="mt-4">
+          Urgent requests that arrive on a holiday are picked up on the next business day. If a
+          vulnerability report lands over a long holiday weekend, send it anyway &mdash; we would rather see
+          it early.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">8. What support does not cover</h2>
+        <ul class="mt-3 list-disc space-y-2 pl-5">
+          <li>
+            Outages, degradation, or maintenance of Jira Cloud or the Forge platform. Those are
+            Atlassian's to resolve; we will help you identify them as such.
+          </li>
+          <li>
+            <strong class="text-bone">Recovery of protected values.</strong> Protected values are stored only
+            in Forge storage on your site. They are deliberately absent from Jira's own backups and
+            exports, and we have no access to them. If a value is overwritten or deleted by a user with
+            edit access, or lost when the app is uninstalled, we cannot restore it. See the
+            <a href="/secure-fields/docs" class="text-signal underline underline-offset-2 hover:text-signal-dim">Setup &amp; Usage Guide</a>
+            for the backup tradeoffs this creates.
+          </li>
+          <li>
+            Configuration you control: permission rules naming a group or project role that does not
+            exist, users removed from a group, or a field added to the wrong screen. We will help you
+            diagnose these, but the fix is in your Jira site.
+          </li>
+          <li>
+            Third-party apps, browser extensions, custom scripts, or integrations that interact with the
+            app, and any Jira functionality unrelated to Secure Fields.
+          </li>
+          <li>
+            Feature requests. We read every one and they shape the roadmap, but no delivery date is
+            committed here.
+          </li>
+          <li>Use of the app outside the Permitted Use defined in our Terms of Service.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">9. Changes to this SLA</h2>
+        <p class="mt-3">
+          We may update this SLA to reflect new features or changing practices, with notice to you. Any
+          change takes effect going forward only, and will not materially reduce our overall support
+          obligations during a subscription term you have already paid for. This mirrors Section 19.6 of
+          our Terms of Service.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">10. Contact</h2>
+        <p class="mt-3">
+          Inorganic Games LLC<br />
+          <a href="mailto:support@inorganicgames.com" class="text-signal underline underline-offset-2 hover:text-signal-dim">support@inorganicgames.com</a>
+        </p>
+        <p class="mt-3">
+          See also
+          <a href="/secure-fields/support" class="text-signal underline underline-offset-2 hover:text-signal-dim">Support</a>,
+          <a href="/secure-fields/terms" class="text-signal underline underline-offset-2 hover:text-signal-dim">Terms of Service</a>, and the
+          <a href="/secure-fields/security" class="text-signal underline underline-offset-2 hover:text-signal-dim">Security Overview</a>.
+        </p>
+      </section>
+    </div>
+  </article>
+</Base>
