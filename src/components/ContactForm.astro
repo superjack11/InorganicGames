@@ -12,11 +12,24 @@ interface Props {
   submitLabel: string;
   /** Prefixes the mailto subject line, e.g. "New contact" or "Free playable build". */
   subjectPrefix: string;
+  /**
+   * Overrides the derived id prefix. Only needed when two forms on one page
+   * would share a subjectPrefix — see `uid` below.
+   */
+  formId?: string;
 }
 
-const { submitLabel, subjectPrefix } = Astro.props;
+const { submitLabel, subjectPrefix, formId } = Astro.props;
 
 const endpoint = resolved(SITE.formEndpoint);
+
+/**
+ * Field ids must be unique per instance: two forms on one page would otherwise
+ * emit duplicate ids, and every `<label for>` would focus the FIRST form's
+ * input regardless of which form was clicked. Derived from subjectPrefix, which
+ * is already distinct per surface; pass `formId` if it ever isn't.
+ */
+const uid = formId ?? subjectPrefix.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 ---
 
 <form
@@ -28,11 +41,11 @@ const endpoint = resolved(SITE.formEndpoint);
   class="space-y-5"
 >
   <div>
-    <label for="name" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+    <label for={`${uid}-name`} class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
       Name
     </label>
     <input
-      id="name"
+      id={`${uid}-name`}
       name="name"
       type="text"
       required
@@ -41,11 +54,11 @@ const endpoint = resolved(SITE.formEndpoint);
   </div>
 
   <div>
-    <label for="email" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+    <label for={`${uid}-email`} class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
       Email
     </label>
     <input
-      id="email"
+      id={`${uid}-email`}
       name="email"
       type="email"
       required
@@ -54,11 +67,11 @@ const endpoint = resolved(SITE.formEndpoint);
   </div>
 
   <div>
-    <label for="game" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+    <label for={`${uid}-game`} class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
       Game / company
     </label>
     <input
-      id="game"
+      id={`${uid}-game`}
       name="game"
       type="text"
       required
@@ -67,11 +80,11 @@ const endpoint = resolved(SITE.formEndpoint);
   </div>
 
   <div>
-    <label for="running" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+    <label for={`${uid}-running`} class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
       What are you running now?
     </label>
     <textarea
-      id="running"
+      id={`${uid}-running`}
       name="running"
       rows="3"
       class="mt-2 w-full resize-none border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
