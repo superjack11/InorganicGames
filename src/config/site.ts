@@ -32,6 +32,9 @@ export const SITE = {
   domain: 'inorganicgames.com',
   email: 'support@inorganicgames.com',
 
+  /** Shared by every lead form (ContactForm.astro). Formspree/Basin/etc, or wire to your CRM. */
+  formEndpoint: 'TODO:form-endpoint — Formspree/Basin/etc, or wire to your CRM' as string,
+
   /** Answers the freelancer-flakiness objection. Must be a promise we keep. */
   responseTime: 'TODO:response-time — e.g. "within 24 hours"' as string,
 

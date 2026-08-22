@@ -1,5 +1,6 @@
 ---
 import CTAButton from './CTAButton.astro';
+import ContactForm from './ContactForm.astro';
 import { SITE, resolved } from '../config/site';
 
 /**
@@ -7,14 +8,7 @@ import { SITE, resolved } from '../config/site';
  * productized into a button: "show us your game, we'll build one playable free."
  *
  * The form is deliberately four fields. Every extra field costs conversions.
- *
- * No form endpoint is configured yet, so the form degrades to email: the script
- * below composes a mailto with the fields in the body. (A bare mailto-action
- * form with GET puts the fields in the URL query, which mail clients silently
- * drop — the lead would arrive empty.) Set FORM_ENDPOINT to switch it over.
  */
-const FORM_ENDPOINT = 'TODO:form-endpoint — Formspree/Basin/etc, or wire to your CRM' as string;
-const endpoint = resolved(FORM_ENDPOINT);
 const responseTime = resolved(SITE.responseTime);
 ---
 
@@ -45,93 +39,6 @@ const responseTime = resolved(SITE.responseTime);
       }
     </div>
 
-    <form
-      action={endpoint ?? `mailto:${SITE.email}`}
-      method="POST"
-      enctype={endpoint ? undefined : 'text/plain'}
-      data-mailto={endpoint ? null : SITE.email}
-      class="space-y-5"
-    >
-      <div>
-        <label for="name" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-          Name
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          class="mt-2 w-full border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
-        />
-      </div>
-
-      <div>
-        <label for="email" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          class="mt-2 w-full border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
-        />
-      </div>
-
-      <div>
-        <label for="game" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-          Game / company
-        </label>
-        <input
-          id="game"
-          name="game"
-          type="text"
-          required
-          class="mt-2 w-full border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
-        />
-      </div>
-
-      <div>
-        <label for="running" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
-          What are you running now?
-        </label>
-        <textarea
-          id="running"
-          name="running"
-          rows="3"
-          class="mt-2 w-full resize-none border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
-        ></textarea>
-      </div>
-
-      <button
-        type="submit"
-        class="w-full bg-signal px-6 py-3 text-sm font-semibold tracking-wide text-ink transition-colors hover:bg-signal-dim"
-      >
-        Send my game, build me one free
-      </button>
-    </form>
+    <ContactForm submitLabel="Send my game, build me one free" subjectPrefix="Free playable build" />
   </div>
 </section>
-
-<script>
-  // With no endpoint configured, compose the lead into a mailto body so the
-  // message actually arrives. The POST/text-plain form action stays as the
-  // no-JS fallback.
-  const form = document.querySelector<HTMLFormElement>('form[data-mailto]');
-
-  form?.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const data = new FormData(form);
-    const lines = [
-      `Name: ${data.get('name') ?? ''}`,
-      `Email: ${data.get('email') ?? ''}`,
-      `Game / company: ${data.get('game') ?? ''}`,
-      `Currently running: ${data.get('running') ?? ''}`,
-    ];
-
-    const subject = encodeURIComponent(`Free playable build: ${data.get('game') ?? ''}`);
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:${form.dataset.mailto}?subject=${subject}&body=${body}`;
-  });
-</script>

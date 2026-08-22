@@ -1,0 +1,112 @@
+---
+import { SITE, resolved } from '../config/site';
+
+/**
+ * Shared four-field lead form (name / email / game / what-they're-running).
+ * No form endpoint is configured yet, so it degrades to email: the script
+ * below composes a mailto with the fields in the body. (A bare mailto-action
+ * form with GET puts the fields in the URL query, which mail clients silently
+ * drop — the lead would arrive empty.) Set SITE.formEndpoint to switch it over.
+ */
+interface Props {
+  submitLabel: string;
+  /** Prefixes the mailto subject line, e.g. "New contact" or "Free playable build". */
+  subjectPrefix: string;
+}
+
+const { submitLabel, subjectPrefix } = Astro.props;
+
+const endpoint = resolved(SITE.formEndpoint);
+---
+
+<form
+  action={endpoint ?? `mailto:${SITE.email}`}
+  method="POST"
+  enctype={endpoint ? undefined : 'text/plain'}
+  data-mailto={endpoint ? null : SITE.email}
+  data-subject-prefix={subjectPrefix}
+  class="space-y-5"
+>
+  <div>
+    <label for="name" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+      Name
+    </label>
+    <input
+      id="name"
+      name="name"
+      type="text"
+      required
+      class="mt-2 w-full border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
+    />
+  </div>
+
+  <div>
+    <label for="email" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+      Email
+    </label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      required
+      class="mt-2 w-full border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
+    />
+  </div>
+
+  <div>
+    <label for="game" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+      Game / company
+    </label>
+    <input
+      id="game"
+      name="game"
+      type="text"
+      required
+      class="mt-2 w-full border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
+    />
+  </div>
+
+  <div>
+    <label for="running" class="block font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+      What are you running now?
+    </label>
+    <textarea
+      id="running"
+      name="running"
+      rows="3"
+      class="mt-2 w-full resize-none border border-ink-line bg-ink px-4 py-3 text-sm text-bone outline-none focus:border-signal"
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full bg-signal px-6 py-3 text-sm font-semibold tracking-wide text-ink transition-colors hover:bg-signal-dim"
+  >
+    {submitLabel}
+  </button>
+</form>
+
+<script>
+  // With no endpoint configured, compose the lead into a mailto body so the
+  // message actually arrives. The POST/text-plain form action stays as the
+  // no-JS fallback.
+  const forms = document.querySelectorAll<HTMLFormElement>('form[data-mailto]');
+
+  forms.forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const lines = [
+        `Name: ${data.get('name') ?? ''}`,
+        `Email: ${data.get('email') ?? ''}`,
+        `Game / company: ${data.get('game') ?? ''}`,
+        `Currently running: ${data.get('running') ?? ''}`,
+      ];
+
+      const subject = encodeURIComponent(`${form.dataset.subjectPrefix}: ${data.get('game') ?? ''}`);
+      const body = encodeURIComponent(lines.join('\n'));
+      window.location.href = `mailto:${form.dataset.mailto}?subject=${subject}&body=${body}`;
+    });
+  });
+</script>

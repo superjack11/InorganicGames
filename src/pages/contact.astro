@@ -1,16 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { SITE, resolved } from '../config/site';
 
 /**
- * The destination for every "Get in touch" CTA on the site. Email is the
- * main action; there is no direct-booking flow yet, so this page is where
- * that conversation actually starts. See CTAButton.astro.
+ * The destination for every "Get in touch" CTA on the site. There is no
+ * direct-booking flow yet, so this page is where that conversation actually
+ * starts. See CTAButton.astro.
  */
 const responseTime = resolved(SITE.responseTime);
 
 const title = 'Contact | Inorganic Games';
-const description = `Get in touch with Inorganic Games about a playable ad build. Email ${SITE.email}.`;
+const description = 'Get in touch with Inorganic Games about a playable ad build.';
 ---
 
 <Base title={title} description={description}>
@@ -21,16 +22,8 @@ const description = `Get in touch with Inorganic Games about a playable ad build
         Tell us about your game.
       </h1>
       <p class="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-muted">
-        Email is the fastest way to reach us. Send the game, the geo, and what you're running now,
-        and we'll take it from there.
+        Send the game, the geo, and what you're running now, and we'll take it from there.
       </p>
-
-      <a
-        href={`mailto:${SITE.email}`}
-        class="mt-10 inline-flex items-center justify-center bg-signal px-8 py-4 text-lg font-semibold tracking-wide text-ink transition-colors hover:bg-signal-dim"
-      >
-        {SITE.email}
-      </a>
 
       {
         responseTime && (
@@ -39,7 +32,13 @@ const description = `Get in touch with Inorganic Games about a playable ad build
           </p>
         )
       }
+    </div>
 
+    <div class="mx-auto mt-12 max-w-xl text-left">
+      <ContactForm submitLabel="Send message" subjectPrefix="New contact" />
+    </div>
+
+    <div class="mx-auto max-w-3xl text-center">
       <p class="mt-16 text-sm text-muted">
         Want to see something first?{' '}
         <a href="/#work" class="text-signal underline-offset-4 hover:underline">Play the live demos</a>.
