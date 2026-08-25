@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SecureFieldsCrumbs from '../../components/SecureFieldsCrumbs.astro';
+import { SECURE_FIELDS } from '../../config/site';
 
 const title = 'Security Overview | Secure Fields';
 const description =
@@ -13,7 +14,7 @@ const description =
   <article class="mx-auto max-w-3xl px-6 py-16 md:py-20">
     <p class="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-signal">Security</p>
     <h1 class="font-display text-4xl tracking-wide text-bone md:text-5xl">Security Overview</h1>
-    <p class="mt-3 text-sm text-muted">Inorganic Games LLC &mdash; Secure Fields<br />Last updated: July 19, 2026</p>
+    <p class="mt-3 text-sm text-muted">Inorganic Games LLC &mdash; Secure Fields<br />Last updated: August 25, 2026</p>
 
     <div class="mt-10 space-y-12 leading-relaxed text-muted">
       <section>
@@ -194,8 +195,11 @@ const description =
           <a href="https://developer.atlassian.com/platform/forge/runs-on-atlassian-apps/" class="text-signal underline underline-offset-2 hover:text-signal-dim">Runs on Atlassian</a>
           program, whose badge is applied automatically on the Marketplace listing &mdash; meaning
           the "nothing leaves Atlassian's infrastructure" claim is verified by Atlassian's own
-          tooling, not just asserted by us. Protected values are never sent to the vendor, to
-          analytics services, or to any third party.
+          tooling, not just asserted by us. <strong class="text-bone">That badge is displayed on our
+          live listing</strong>, so you do not have to take our word for it &mdash; check
+          <a href={SECURE_FIELDS.marketplaceUrl} class="text-signal underline underline-offset-2 hover:text-signal-dim" rel="noopener">Atlassian's page</a>,
+          not ours. Protected values are never sent to the vendor, to analytics services, or to any
+          third party.
         </p>
         <p class="mt-3">
           Atlassian's own caveat applies and is worth repeating honestly: egress controls constrain
@@ -390,8 +394,10 @@ const description =
             renders a masked placeholder.
           </li>
           <li>
-            Check the Marketplace listing for the <strong class="text-bone">Runs on Atlassian</strong>
-            badge and your admin data residency screen for the app's
+            Check the
+            <a href={SECURE_FIELDS.marketplaceUrl} class="text-signal underline underline-offset-2 hover:text-signal-dim" rel="noopener">Marketplace listing</a>
+            for the <strong class="text-bone">Runs on Atlassian</strong> badge &mdash; it is
+            displayed there today &mdash; and your admin data residency screen for the app's
             <strong class="text-bone">PINNED</strong> status.
           </li>
         </ol>

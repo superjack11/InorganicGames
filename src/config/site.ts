@@ -42,6 +42,23 @@ export const SITE = {
   turnaround: 'TODO:turnaround — e.g. "10 business days"' as string,
 } as const;
 
+/**
+ * Secure Fields for Jira — live on the Atlassian Marketplace since 2026.
+ *
+ * `marketplaceUrl` is the canonical listing; `marketplaceName` is the exact
+ * published product name and must match the listing character for character
+ * (the Marketplace name is "Secure Fields for Jira", NOT the descriptive H1 used
+ * on /secure-fields/). Pricing mirrors the live tier ladder: the 1-10 user tier
+ * is free and every tier above is priced at $1 per user per month, with annual
+ * billed at 10x monthly.
+ */
+export const SECURE_FIELDS = {
+  marketplaceName: 'Secure Fields for Jira',
+  marketplaceUrl: 'https://marketplace.atlassian.com/apps/3178522457/secure-fields-for-jira',
+  pricingUrl: 'https://marketplace.atlassian.com/apps/3178522457/secure-fields-for-jira?tab=pricing',
+  freeUserTier: 10,
+} as const;
+
 export type ShippedTitle = {
   name: string;
   platform: string;

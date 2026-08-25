@@ -1,6 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SecureFieldsCrumbs from '../../components/SecureFieldsCrumbs.astro';
+import CTAButton from '../../components/CTAButton.astro';
+import { SECURE_FIELDS } from '../../config/site';
 
 const title = 'Secure Fields — Field-Level Security for Jira | Inorganic Games';
 const description =
@@ -62,6 +64,28 @@ const sectionLinks = [
       loading="eager"
       decoding="async"
     />
+
+    <div class="mt-10 border border-ink-line bg-ink-raised p-6">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-signal">Available now</p>
+      <p class="mt-3 leading-relaxed text-muted">
+        <strong class="text-bone">{SECURE_FIELDS.marketplaceName}</strong> is live on the Atlassian
+        Marketplace, carrying the
+        <strong class="text-bone">Runs on Atlassian</strong> badge. Install it on any Jira Cloud
+        site, with a free trial to evaluate it first.
+      </p>
+      <p class="mt-3 text-sm leading-relaxed text-muted">
+        <strong class="text-bone">Free for Jira sites of up to {SECURE_FIELDS.freeUserTier} users.</strong>
+        Above that it is $1 per user per month, billed by Atlassian alongside your other apps
+        (annual billing is 10 months' price for 12).
+        <a href={SECURE_FIELDS.pricingUrl} class="text-signal underline underline-offset-2 hover:text-signal-dim" rel="noopener">
+          See the full pricing tiers
+        </a>.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <CTAButton label="Get it on the Atlassian Marketplace" href={SECURE_FIELDS.marketplaceUrl} />
+        <CTAButton label="Read the setup guide" variant="ghost" href="/secure-fields/docs" />
+      </div>
+    </div>
 
     <div class="mt-10 space-y-12 leading-relaxed text-muted">
       <section>
@@ -186,6 +210,8 @@ const sectionLinks = [
           <a href="/" class="text-signal underline underline-offset-2 hover:text-signal-dim">Inorganic Games LLC</a>.
           Questions, bug reports, and private security disclosures go to
           <a href="mailto:support@inorganicgames.com" class="text-signal underline underline-offset-2 hover:text-signal-dim">support@inorganicgames.com</a>.
+          The app itself is installed from its
+          <a href={SECURE_FIELDS.marketplaceUrl} class="text-signal underline underline-offset-2 hover:text-signal-dim" rel="noopener">Atlassian Marketplace listing</a>.
         </p>
       </section>
     </div>

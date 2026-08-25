@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import SecureFieldsCrumbs from '../../components/SecureFieldsCrumbs.astro';
+import { SECURE_FIELDS } from '../../config/site';
 
 const title = 'Setup & Usage Guide | Secure Fields';
 const description =
@@ -13,11 +14,41 @@ const description =
   <article class="mx-auto max-w-3xl px-6 py-16 md:py-20">
     <p class="mb-3 font-mono text-xs uppercase tracking-[0.2em] text-signal">Documentation</p>
     <h1 class="font-display text-4xl tracking-wide text-bone md:text-5xl">Setup &amp; Usage Guide</h1>
-    <p class="mt-3 text-sm text-muted">Last updated: July 16, 2026</p>
+    <p class="mt-3 text-sm text-muted">Last updated: August 25, 2026</p>
 
     <div class="mt-10 space-y-12 leading-relaxed text-muted">
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">1. What Secure Fields does</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">1. Install the app</h2>
+        <p class="mt-3">
+          Secure Fields is distributed through the Atlassian Marketplace as
+          <strong class="text-bone">{SECURE_FIELDS.marketplaceName}</strong>, for Jira Cloud. A Jira
+          administrator installs it from the listing:
+        </p>
+        <ol class="mt-3 list-decimal space-y-2 pl-5">
+          <li>
+            Open the
+            <a href={SECURE_FIELDS.marketplaceUrl} class="text-signal underline underline-offset-2 hover:text-signal-dim" rel="noopener">
+              Marketplace listing
+            </a>
+            and choose <strong class="text-bone">Try it free</strong> (or install it from
+            Jira&rsquo;s own <em>Apps &rarr; Explore more apps</em> screen).
+          </li>
+          <li>Pick the Jira Cloud site to install on and approve the app&rsquo;s three scopes.</li>
+          <li>
+            Licensing is handled by Atlassian: the app is free for sites of up to
+            {SECURE_FIELDS.freeUserTier} users, and $1 per user per month above that. While a
+            licence is inactive, stored values are kept untouched but are not revealed, and the
+            admin page will not save rule changes.
+          </li>
+        </ol>
+        <p class="mt-3">
+          The app runs entirely on Atlassian&rsquo;s infrastructure &mdash; there is nothing to
+          host, no account to create with us, and no outbound connection to configure.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl tracking-wide text-bone">2. What Secure Fields does</h2>
         <p class="mt-3">
           Secure Fields adds a <strong class="text-bone">Secure Text</strong> custom field type to Jira Cloud.
           A value stored in a Secure Text field is held in Forge storage on Atlassian's platform &mdash;
@@ -28,7 +59,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">2. Add the field to your project</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">3. Add the field to your project</h2>
         <p class="mt-3">
           Creating and placing a Secure Text field uses ordinary Jira field administration &mdash; Secure
           Fields doesn't change this part of the workflow:
@@ -41,7 +72,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">3. Set a protected value</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">4. Set a protected value</h2>
         <div class="mt-3 border border-ink-line bg-ink-raised p-4">
           <p class="text-sm text-bone">
             A Secure Text field can't be set while creating an issue. Save the issue first, then open the
@@ -70,7 +101,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">4. Configure who can see and edit a field</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">5. Configure who can see and edit a field</h2>
         <p class="mt-3">
           Permission rules are managed by Jira administrators from
           <strong class="text-bone">Jira admin settings &rarr; Apps &rarr; Secure Fields</strong>.
@@ -102,7 +133,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">5. Access history</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">6. Access history</h2>
         <p class="mt-3">
           The same admin page includes an audit log covering every successful <strong class="text-bone">reveal</strong>
           of a protected value (a real view or edit-prefill &mdash; a masked render exposes nothing and
@@ -113,7 +144,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">6. Know the tradeoffs</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">7. Know the tradeoffs</h2>
         <p class="mt-3">These are consequences of the design, not defects:</p>
         <ul class="mt-3 list-disc space-y-2 pl-5">
           <li>
@@ -131,7 +162,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">7. Compliance positioning</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">8. Compliance positioning</h2>
         <p class="mt-3">
           Secure Fields is a technical access control designed to support compliance programs &mdash;
           HIPAA, SOC 2, GDPR, ISO 27001, and similar &mdash; by keeping designated field values out of
@@ -147,7 +178,7 @@ const description =
       </section>
 
       <section>
-        <h2 class="font-display text-2xl tracking-wide text-bone">8. Questions</h2>
+        <h2 class="font-display text-2xl tracking-wide text-bone">9. Questions</h2>
         <p class="mt-3">
           See <a href="/secure-fields/support" class="text-signal underline underline-offset-2 hover:text-signal-dim">Support</a>
           for how to reach us, and our

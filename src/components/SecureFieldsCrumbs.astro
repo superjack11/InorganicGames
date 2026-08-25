@@ -1,4 +1,6 @@
 ---
+import { SECURE_FIELDS } from '../config/site';
+
 interface Props {
   current: 'overview' | 'docs' | 'security' | 'privacy' | 'terms' | 'support' | 'sla';
 }
@@ -32,6 +34,13 @@ const links = [
           </a>
         ))
       }
+      <a
+        href={SECURE_FIELDS.marketplaceUrl}
+        class="text-bone transition-colors hover:text-signal"
+        rel="noopener"
+      >
+        Marketplace &nearr;
+      </a>
     </nav>
   </div>
 </div>
